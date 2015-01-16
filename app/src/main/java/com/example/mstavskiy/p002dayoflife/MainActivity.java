@@ -9,7 +9,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-// Проверка работы github и версий.
 
 public class MainActivity extends Activity implements OnClickListener {
 
