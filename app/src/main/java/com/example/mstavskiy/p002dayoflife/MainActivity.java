@@ -1,21 +1,25 @@
 package com.example.mstavskiy.p002dayoflife;
 
-import java.util.Calendar;
-
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import com.example.mstavskiy.p002dayoflife.DatePickerFragment.DatePickedListener;
+import java.util.Calendar;
 
 
-public class MainActivity extends Activity implements OnClickListener {
+public class MainActivity extends Activity implements DatePickedListener, OnClickListener {
 
     static int d1 = 16;
     static int m1 = 11;
     static int y1 = 1985;
-    int DIALOG_DATE = 1;
+
+    int d2;
+    int m2;
+    int y2;
 
     TextView tv_y;
     TextView tv_m;
@@ -29,7 +33,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
 
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
@@ -42,55 +46,36 @@ public class MainActivity extends Activity implements OnClickListener {
         dob = (Button) findViewById(R.id.dob);
         btn_count = (Button) findViewById(R.id.btn_count);
 
-        dob.setOnClickListener(this);
+
         btn_count.setOnClickListener(this);
 
+        final Calendar cal = Calendar.getInstance();
+           d2= cal.get(Calendar.DAY_OF_MONTH);
+           m2= cal.get(Calendar.MONTH)+1;
+           y2= cal.get(Calendar.YEAR);
     }
 
-    /*   public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
-       @Override
-
-           public Dialog onCreateDialog(Bundle savedInstanceState) {
-
-           return new DatePickerDialog(getActivity(), this, y1, m1, d1);
-           }
-
-           public void onDateSet(DatePicker view, int year, int month, int day) {
-           y1 = year;
-           m1 = month;
-           d1 = day;
-           };
-      }
 
 
-
-       public void showDatePickerDialog (View v) {
-          DialogFragment newFragment = new DatePickerFragment();
-          newFragment.show(getSupportFragmentManager(), "datePicker");
-           }
-   */
-    @Override
+        @Override
     public void onClick (View v) {
 
         switch (v.getId()){
 
             case R.id.btn_count:
 
-                int y = 0; //kol-vo let
-                int m = 0; //kol-vo mesyacev
-                int d = 0; //kol-vo dney
+                int y ; //kol-vo let
+                int m ; //kol-vo mesyacev
+                int d ; //kol-vo dney
                 int total = 0; //obshee kolichesctvo dney
 
-                Calendar cal = Calendar.getInstance();
-                int d2= cal.get(Calendar.DAY_OF_MONTH);
-                int m2= cal.get(Calendar.MONTH)+1;
-                int y2= cal.get(Calendar.YEAR);
+
 
 
                 if (y2 < y1) {
                     tv_t.setText("No way.");
                     break;
-                };
+                }
 
                 //Vychislenie kolichestva let, mesyacev, dney.
                 if (m2>=m1) {
@@ -111,8 +96,8 @@ public class MainActivity extends Activity implements OnClickListener {
                         } else {
                             if (m1%2==0) {
                                 d=31-d1+d2;
-                            } else {d=30-d1+d2;};
-                        };
+                            } else {d=30-d1+d2;}
+                        }
                     }
                 } else {
                     y=y2-y1-1;
@@ -136,7 +121,7 @@ public class MainActivity extends Activity implements OnClickListener {
                         }
                     }
 
-                };
+                }
 
 
                 //Vychislenie kolichestva dney
@@ -146,7 +131,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     } else {
                         total = total + 365;
                     }
-                };
+                }
 
                 for (int i = 1; i < m2; i++) {
                     if (i < 8) {
@@ -156,13 +141,13 @@ public class MainActivity extends Activity implements OnClickListener {
                                     total = total + 29;
                                 } else {
                                     total = total + 28;
-                                };
+                                }
                             } else {
                                 total = total + 30;
-                            };
+                            }
                         } else {
                             total = total + 31;
-                        };
+                        }
                     } else {
                         if (i % 2 ==0) {
                             total = total + 31;
@@ -182,13 +167,13 @@ public class MainActivity extends Activity implements OnClickListener {
                                     total = total + 29;
                                 } else {
                                     total = total + 28;
-                                };
+                                }
                             } else {
                                 total = total + 30;
-                            };
+                            }
                         } else {
                             total = total + 31;
-                        };
+                        }
                     } else {
                         if (i % 2 ==0) {
                             total = total + 31;
@@ -205,20 +190,20 @@ public class MainActivity extends Activity implements OnClickListener {
                                 total = total + 29 - d1;
                             } else {
                                 total = total + 28 - d1;
-                            };
+                            }
                         } else {
                             total = total + 30 - d1;
-                        };
+                        }
                     } else {
                         total = total + 31 - d1;
-                    };
+                    }
                 } else {
                     if (m1 % 2 == 0) {
                         total = total + 31 - d1;
                     } else {
                         total = total + 30 - d1;
                     }
-                };
+                }
 
 
 
@@ -230,7 +215,27 @@ public class MainActivity extends Activity implements OnClickListener {
                 tv_total.setText("Всего: " + total +"дней");
 
                 break;
-        };
-    };
+        }
+    }
+
+    public void onLabelClick(View v) {
+        DialogFragment dateFragment = new DatePickerFragment();
+        dateFragment.show(getFragmentManager(), "datePicker");
+    }
+
+    public void onDatePicked(Calendar date) {
+        // выводим выбранную дату в текстовой метке 494
+        y1 = date.get(Calendar.YEAR);
+        m1 = date.get(Calendar.MONTH) + 1;
+        d1 = date.get(Calendar.DAY_OF_MONTH);
+
+        updateDisplay();
+    }
+
+       public void updateDisplay() {
+        dob.setText(new StringBuilder().append(d1).append(".")
+                .append(m1).append(".").append(y1));
+    }
+
 
 }
