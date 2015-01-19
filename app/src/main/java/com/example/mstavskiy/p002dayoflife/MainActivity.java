@@ -232,10 +232,10 @@ public class MainActivity extends Activity implements DatePickedListener, OnClic
         updateDisplay();
     }
 
-       public void updateDisplay() {
+    // обновляем дату для вывода в TextView
+    public void updateDisplay() {
         dob.setText(new StringBuilder().append(d1).append(".")
                 .append(m1).append(".").append(y1));
     }
-
-
 }
+
