@@ -11,15 +11,16 @@ import com.example.mstavskiy.p002dayoflife.DatePickerFragment.DatePickedListener
 import java.util.Calendar;
 
 
-public class MainActivity extends Activity implements DatePickedListener, OnClickListener {
+public class MainActivity extends Activity /*implements DatePickedListener*/ {
 
-    static int d1 = 16;
-    static int m1 = 11;
-    static int y1 = 1985;
+    int d1 = 16;
+    int m1 = 11;
+    int y1 = 1985;
 
-    int d2;
-    int m2;
-    int y2;
+    final Calendar cal = Calendar.getInstance();
+    int d2= cal.get(Calendar.DAY_OF_MONTH);
+    int m2= cal.get(Calendar.MONTH)+1;
+    int y2= cal.get(Calendar.YEAR);
 
     TextView tv_y;
     TextView tv_m;
@@ -46,19 +47,13 @@ public class MainActivity extends Activity implements DatePickedListener, OnClic
         dob = (Button) findViewById(R.id.dob);
         btn_count = (Button) findViewById(R.id.btn_count);
 
+        dob.setText(String.valueOf(d2)+'/' + String.valueOf(m2)+ '/' + String.valueOf(y2));
 
-        btn_count.setOnClickListener(this);
-
-        final Calendar cal = Calendar.getInstance();
-           d2= cal.get(Calendar.DAY_OF_MONTH);
-           m2= cal.get(Calendar.MONTH)+1;
-           y2= cal.get(Calendar.YEAR);
     }
 
 
 
-        @Override
-    public void onClick (View v) {
+    public void onclick (View v) {
 
         switch (v.getId()){
 
@@ -215,27 +210,17 @@ public class MainActivity extends Activity implements DatePickedListener, OnClic
                 tv_total.setText("Всего: " + total +"дней");
 
                 break;
+
+            case R.id.dob:
+                tv_t.setText("Пока хер");
+                tv_d.setText(null);
+                tv_m.setText(null);
+                tv_y.setText(null);
+                tv_total.setText(null);
+                break;
         }
     }
 
-    public void onLabelClick(View v) {
-        DialogFragment dateFragment = new DatePickerFragment();
-        dateFragment.show(getFragmentManager(), "datePicker");
-    }
 
-    public void onDatePicked(Calendar date) {
-        // выводим выбранную дату в текстовой метке 494
-        y1 = date.get(Calendar.YEAR);
-        m1 = date.get(Calendar.MONTH) + 1;
-        d1 = date.get(Calendar.DAY_OF_MONTH);
-
-        updateDisplay();
-    }
-
-    // обновляем дату для вывода в TextView
-    public void updateDisplay() {
-        dob.setText(new StringBuilder().append(d1).append(".")
-                .append(m1).append(".").append(y1));
-    }
 }
 

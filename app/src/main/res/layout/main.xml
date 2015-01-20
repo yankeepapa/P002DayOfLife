@@ -26,15 +26,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="DatePickerDialog"
-            android:text="" />
+            android:onClick="onclick"
+            android:text=""
+            android:clickable="true" />
 
         <Button
             android:id="@+id/btn_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Рассчитать" />
+            android:text="Рассчитать"
+            android:clickable="true"
+            android:onClick="onclick"
+            android:nestedScrollingEnabled="false" />
 
     </LinearLayout>
 
