@@ -31,9 +31,6 @@ public class MainActivity extends Activity /*implements DatePickedListener*/ {
     Button dob;
     Button btn_count;
 
-
-
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
