@@ -1,6 +1,7 @@
 package com.example.mstavskiy.p002dayoflife;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -23,7 +24,11 @@ public class DatePickerFragment extends DialogFragment implements
         int day = c.get(Calendar.DAY_OF_MONTH);
 
         // создадим экземпляр класса DatePickerDialog и вернем его
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+        //return new DatePickerDialog(getActivity(), this, year, month, day);
+
+        DatePickerDialog dialog = new DatePickerDialog(getActivity(), this, year, month, day);
+        dialog.getDatePicker().setMaxDate(new Date().getTime());
+        return dialog;
     }
 
     @Override
