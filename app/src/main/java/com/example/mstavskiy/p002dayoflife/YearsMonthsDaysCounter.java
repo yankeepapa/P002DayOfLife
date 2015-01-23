@@ -1,21 +1,13 @@
 package com.example.mstavskiy.p002dayoflife;
 
-/**
- * Created by MStavskiy on 22-Jan-15.
- */
+
 public class YearsMonthsDaysCounter {
 
-    int y; //kol-vo let
-    int m; //kol-vo mesyacev
-    int d; //kol-vo dney
-    int y1;
-    int m1;
-    int d1;
-    int y2;
-    int m2;
-    int d2;
+    int d;
+    int m;
+    int y;
 
-    public YearsMonthsDaysCounter (int yBirth, int mBirth, int dBirth, int yNow, int mNow, int dNow) {
+    public yearsMonthsDaysCounter (int y1, int m1, int d1, int y2, int m2, int d2) {
 
         //Vychislenie kolichestva let, mesyacev, dney.
         if (m2 >= m1) {
@@ -78,6 +70,7 @@ public class YearsMonthsDaysCounter {
             }
 
         }
+
 
 
 

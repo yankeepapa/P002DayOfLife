@@ -18,10 +18,9 @@ public class DatePickerFragment extends DialogFragment implements
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // установим текущую дату в диалоговом окне
-        final Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
+        int year = 1985;
+        int month = 10;
+        int day = 16;
 
         // создадим экземпляр класса DatePickerDialog и вернем его
         //return new DatePickerDialog(getActivity(), this, year, month, day);

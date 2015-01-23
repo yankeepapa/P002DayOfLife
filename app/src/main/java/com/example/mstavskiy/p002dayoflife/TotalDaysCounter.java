@@ -1,20 +1,13 @@
 package com.example.mstavskiy.p002dayoflife;
 
-/**
- * Created by MStavskiy on 22-Jan-15.
- */
+
 public class TotalDaysCounter {
     int total = 0; //obshee kolichesctvo dney
     int minus = 0;
-    int y1;
-    int m1;
-    int d1;
-    int y2;
-    int m2;
-    int d2;
+
 
     //Vychislenie kolichestva dney
-    public TotalDaysCounter (int yBirth,int mBirth, int dBirth, int yNow, int mNow, int dNow ) {
+    public totalDaysCounter (int y1,int m1, int d1, int y2, int m2, int d2 ) {
 
         if (y1 != y2) {
 
@@ -154,6 +147,7 @@ public class TotalDaysCounter {
             total = total - minus;
 
         }
+
 
     }
 }

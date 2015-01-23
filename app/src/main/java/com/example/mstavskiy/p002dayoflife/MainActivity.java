@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.example.mstavskiy.p002dayoflife.DatePickerFragment.DatePickedListener;
+import com.example.mstavskiy.p002dayoflife.YearsMonthsDaysCounter;
+import com.example.mstavskiy.p002dayoflife.TotalDaysCounter;
 import java.util.Calendar;
 
 
@@ -81,12 +83,16 @@ public class MainActivity extends Activity implements DatePickedListener {
                 long milliseconds = 200;
                 vib.vibrate(milliseconds);
 
+                int days = yearsMonthsDaysCounter(y1, m1, d1, y2, m2, d2);
+                int m = yearsMonthsDaysCounter(y1, m1, d1, y2, m2, d2);
+                int y = yearsMonthsDaysCounter(y1, m1, d1, y2, m2, d2);
 
+                int total = totalDaysCounter(y1, m1, d1, y2, m2, d2);
 
 
 
                 tv_t.setText("Вы прожили:");
-                tv_d.setText(d + " дней");
+                tv_d.setText(days + " дней");
                 tv_m.setText(m + " месяцев");
                 tv_y.setText(y + " лет");
                 tv_total.setText("Всего: " + total + " дней");
