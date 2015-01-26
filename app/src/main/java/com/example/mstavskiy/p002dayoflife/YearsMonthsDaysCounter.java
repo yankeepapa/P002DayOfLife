@@ -3,11 +3,13 @@ package com.example.mstavskiy.p002dayoflife;
 
 public class YearsMonthsDaysCounter {
 
-    int d;
-    int m;
-    int y;
+    private int[] ymd = new int[3]; // ymd[year,month,day]
 
-    public yearsMonthsDaysCounter (int y1, int m1, int d1, int y2, int m2, int d2) {
+    public int[] yearsMonthsDaysCounter (int y1, int m1, int d1, int y2, int m2, int d2) {
+
+        int y;
+        int m;
+        int d;
 
         //Vychislenie kolichestva let, mesyacev, dney.
         if (m2 >= m1) {
@@ -71,7 +73,11 @@ public class YearsMonthsDaysCounter {
 
         }
 
+        ymd[0] = y;
+        ymd[1] = m;
+        ymd[2] = d;
 
+        return ymd;
 
 
     }

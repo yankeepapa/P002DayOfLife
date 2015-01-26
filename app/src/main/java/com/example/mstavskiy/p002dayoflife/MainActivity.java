@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.example.mstavskiy.p002dayoflife.DatePickerFragment.DatePickedListener;
-import com.example.mstavskiy.p002dayoflife.YearsMonthsDaysCounter;
-import com.example.mstavskiy.p002dayoflife.TotalDaysCounter;
 import java.util.Calendar;
 
 
@@ -48,9 +46,7 @@ public class MainActivity extends Activity implements DatePickedListener {
         btn_count = (ImageButton) findViewById(R.id.btn_count);
 
         dob.setText(String.valueOf(d1)+'/' + String.valueOf(m1)+ '/' + String.valueOf(y1));
-
     }
-
 
     public void onLabelClick(View v) {
         DialogFragment dateFragment = new DatePickerFragment();
@@ -72,30 +68,26 @@ public class MainActivity extends Activity implements DatePickedListener {
                 .append(m1).append(".").append(y1));
     }
 
-
     public void onclick (View v) {
         switch (v.getId()) {
 
             case R.id.btn_count:
 
                 Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
                 long milliseconds = 200;
                 vib.vibrate(milliseconds);
 
-                int days = yearsMonthsDaysCounter(y1, m1, d1, y2, m2, d2);
-                int m = yearsMonthsDaysCounter(y1, m1, d1, y2, m2, d2);
-                int y = yearsMonthsDaysCounter(y1, m1, d1, y2, m2, d2);
+                YearsMonthsDaysCounter ymdc = new YearsMonthsDaysCounter();
+                int[] ym = ymdc.yearsMonthsDaysCounter(y1,m1,d1,y2,m2,d2);
 
-                int total = totalDaysCounter(y1, m1, d1, y2, m2, d2);
-
-
+                TotalDaysCounter tdc = new TotalDaysCounter();
+                int t = tdc.totalDaysCounter(y1,m1,d1,y2,m2,d2);
 
                 tv_t.setText("Вы прожили:");
-                tv_d.setText(days + " дней");
-                tv_m.setText(m + " месяцев");
-                tv_y.setText(y + " лет");
-                tv_total.setText("Всего: " + total + " дней");
+                tv_d.setText(ym[2] + " дней");
+                tv_m.setText(ym[1] + " месяцев");
+                tv_y.setText(ym[0] + " лет");
+                tv_total.setText("Всего: " + t + " дней");
 
              break;
 
