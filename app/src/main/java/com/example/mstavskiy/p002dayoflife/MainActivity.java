@@ -80,14 +80,15 @@ public class MainActivity extends Activity implements DatePickedListener {
                 YearsMonthsDaysCounter ymdc = new YearsMonthsDaysCounter();
                 int[] ym = ymdc.yearsMonthsDaysCounter(y1,m1,d1,y2,m2,d2);
 
-                TotalDaysCounter tdc = new TotalDaysCounter();
-                int t = tdc.totalDaysCounter(y1,m1,d1,y2,m2,d2);
+
+                RightWord rw = new RightWord();
+                String[] str = ymdt(ym);
 
                 tv_t.setText("Вы прожили:");
                 tv_d.setText(ym[2] + " дней");
                 tv_m.setText(ym[1] + " месяцев");
                 tv_y.setText(ym[0] + " лет");
-                tv_total.setText("Всего: " + t + " дней");
+                tv_total.setText("Всего: " + ym[3] + " дней");
 
              break;
 
