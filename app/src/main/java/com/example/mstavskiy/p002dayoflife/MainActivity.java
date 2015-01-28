@@ -8,7 +8,9 @@ import android.os.Vibrator;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
 import com.example.mstavskiy.p002dayoflife.DatePickerFragment.DatePickedListener;
+
 import java.util.Calendar;
 
 
@@ -82,13 +84,13 @@ public class MainActivity extends Activity implements DatePickedListener {
 
 
                 RightWord rw = new RightWord();
-                String[] str = ymdt(ym);
+                String[] str = rw.ymdt(ym);
 
                 tv_t.setText("Вы прожили:");
-                tv_d.setText(ym[2] + " дней");
-                tv_m.setText(ym[1] + " месяцев");
-                tv_y.setText(ym[0] + " лет");
-                tv_total.setText("Всего: " + ym[3] + " дней");
+                tv_d.setText(ym[2] + str[2]);
+                tv_m.setText(ym[1] + str[1]);
+                tv_y.setText(ym[0] + str[0]);
+                tv_total.setText("Всего: " + ym[3] + str[3]);
 
              break;
 
