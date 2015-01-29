@@ -47,7 +47,7 @@ public class MainActivity extends Activity implements DatePickedListener {
         dob = (TextView) findViewById(R.id.dob);
         btn_count = (ImageButton) findViewById(R.id.btn_count);
 
-        dob.setText(String.valueOf(d1)+'/' + String.valueOf(m1)+ '/' + String.valueOf(y1));
+        dob.setText(String.valueOf(d1)+'.' + String.valueOf(m1)+ '.' + String.valueOf(y1));
     }
 
     public void onLabelClick(View v) {
@@ -86,11 +86,11 @@ public class MainActivity extends Activity implements DatePickedListener {
                 RightWord rw = new RightWord();
                 String[] str = rw.ymdt(ym);
 
-                tv_t.setText("Вы прожили:");
-                tv_d.setText(ym[2] + str[2]);
-                tv_m.setText(ym[1] + str[1]);
-                tv_y.setText(ym[0] + str[0]);
-                tv_total.setText("Всего: " + ym[3] + str[3]);
+                tv_t.setText("   Вы прожили:");
+                tv_d.setText("   " + ym[2] + str[2]);
+                tv_m.setText("   " + ym[1] + str[1]);
+                tv_y.setText("   " + ym[0] + str[0]);
+                tv_total.setText("   Всего: " + ym[3] + str[3]);
 
              break;
 
