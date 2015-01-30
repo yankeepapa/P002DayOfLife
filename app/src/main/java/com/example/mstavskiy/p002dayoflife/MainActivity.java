@@ -68,6 +68,8 @@ public class MainActivity extends Activity implements DatePickedListener {
     public void updateDisplay() {
         dob.setText(new StringBuilder().append(d1).append(".")
                 .append(m1).append(".").append(y1));
+
+
     }
 
     public void onclick (View v) {

@@ -1,14 +1,14 @@
 package com.example.mstavskiy.p002dayoflife;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.widget.DatePicker;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class DatePickerFragment extends DialogFragment implements
         DatePickerDialog.OnDateSetListener {
@@ -17,7 +17,7 @@ public class DatePickerFragment extends DialogFragment implements
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // установим текущую дату в диалоговом окне
+        // установим свою дату в диалоговом окне
         int year = 1985;
         int month = 10;
         int day = 16;
