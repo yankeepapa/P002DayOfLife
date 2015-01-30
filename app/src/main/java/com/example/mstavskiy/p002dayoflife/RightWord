@@ -47,7 +47,7 @@ public class RightWord {
                     break;
 
                 case 3:
-                    text[q] = years[alg(ym[q])];
+                    text[q] = days [alg(ym[q])];
                     break;
 
             }
