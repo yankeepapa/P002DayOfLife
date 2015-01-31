@@ -15,12 +15,14 @@ public class DatePickerFragment extends DialogFragment implements
 
     private DatePickedListener mListener;
 
-    @Override
+    static int year = 1985;
+    static int month = 10;
+    static int day = 16;
+
+        @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // установим свою дату в диалоговом окне
-        int year = 1985;
-        int month = 10;
-        int day = 16;
+
 
         // создадим экземпляр класса DatePickerDialog и вернем его
         //return new DatePickerDialog(getActivity(), this, year, month, day);
@@ -35,6 +37,7 @@ public class DatePickerFragment extends DialogFragment implements
         // when the fragment is initially shown (i.e. attached to the activity),
         // cast the activity to the callback interface type
         super.onAttach(activity);
+
         try {
             mListener = (DatePickedListener) activity;
         } catch (ClassCastException e) {
@@ -44,14 +47,20 @@ public class DatePickerFragment extends DialogFragment implements
     }
 
     @Override
-    public void onDateSet(DatePicker view, int year, int month, int day) {
+    public void onDateSet(DatePicker view, int year0, int month0, int day0) {
         // Пользователь выбрал дату. Выводим его в текстовой метке
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR, year);
-        c.set(Calendar.MONTH, month);
-        c.set(Calendar.DAY_OF_MONTH, day);
+        c.set(Calendar.YEAR, year0);
+        c.set(Calendar.MONTH, month0);
+        c.set(Calendar.DAY_OF_MONTH, day0);
 
         mListener.onDatePicked(c);
+
+        year = year0;
+        month = month0;
+        day = day0;
+
+
     }
 
     public static interface DatePickedListener {

@@ -30,8 +30,8 @@ public class MainActivity extends Activity implements DatePickedListener {
     TextView tv_d;
     TextView tv_t;
     TextView tv_total;
-
     TextView dob;
+
     ImageButton btn_count;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class MainActivity extends Activity implements DatePickedListener {
         dateFragment.show(getFragmentManager(), "datePicker");
     }
 
-    public void onDatePicked(Calendar date) {
+    public void onDatePicked (Calendar date) {
         // выводим выбранную дату в текстовой метке
         y1 = date.get(Calendar.YEAR);
         m1 = date.get(Calendar.MONTH) + 1;
@@ -71,6 +71,8 @@ public class MainActivity extends Activity implements DatePickedListener {
 
 
     }
+
+
 
     public void onclick (View v) {
         switch (v.getId()) {
