@@ -14,7 +14,7 @@ public class YearsMonthsDaysCounter {
         int minus = 0;
 
         //Vychislenie kolichestva let, mesyacev, dney.
-        if (m2 >= m1) {
+        if (m2 > m1) {
             y = y2 - y1;
             if (d2 >= d1) {
                 m = m2 - m1;
@@ -44,11 +44,19 @@ public class YearsMonthsDaysCounter {
                 }
             }
         } else {
-            y = y2 - y1 - 1;
-            if (d2 >= d1) {
-                d = d2 - d1;
-                m = 12 - m1 + m2;
+
+            if (d2 >= d1) { //Отсюда убрать равно и дописать код для этого случая
+                if (m1 == m2) {
+                        y = y2 - y1;
+                        d = d2 - d1;
+                        m = 0;
+                } else {
+                    y = y2 - y1;
+                    d = d2 - d1;
+                    m = 12 - m1 + m2;
+                }
             } else {
+                y = y2 - y1 - 1;
                 m = 12 - m1 + m2 - 1;
                 if (m1 < 8) {
                     if (m1 % 2 == 0) {
