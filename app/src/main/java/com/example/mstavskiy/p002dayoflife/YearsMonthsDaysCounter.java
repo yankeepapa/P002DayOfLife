@@ -44,14 +44,13 @@ public class YearsMonthsDaysCounter {
                 }
             }
         } else {
-
-            if (d2 >= d1) { //Отсюда убрать равно и дописать код для этого случая
+            if (d2 >= d1) { 
                 if (m1 == m2) {
                         y = y2 - y1;
                         d = d2 - d1;
                         m = 0;
                 } else {
-                    y = y2 - y1;
+                    y = y2 - y1 - 1;
                     d = d2 - d1;
                     m = 12 - m1 + m2;
                 }
