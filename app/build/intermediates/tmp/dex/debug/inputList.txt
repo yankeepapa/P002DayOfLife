@@ -1,5 +1,0 @@
-C:\Users\MStavskiy\AndroidStudioProjects\P002DayOfLife\app\build\intermediates\classes\debug
-C:\Users\MStavskiy\AndroidStudioProjects\P002DayOfLife\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-3e512449f977d0459e8c2a93e716a5ef9cfd1d1e.jar
-C:\Users\MStavskiy\AndroidStudioProjects\P002DayOfLife\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-9576d62c042a4793b2cea739109932fde232be98.jar
-C:\Users\MStavskiy\AndroidStudioProjects\P002DayOfLife\app\build\intermediates\pre-dexed\debug\classes-9c8fad08aa23ea4d95bfc1149c0b504da0c4ad7c.jar
-C:\Users\MStavskiy\AndroidStudioProjects\P002DayOfLife\app\build\intermediates\pre-dexed\debug\classes-e43a7844930c776c676d5bfc3612c8d8c6a2f0b1.jar

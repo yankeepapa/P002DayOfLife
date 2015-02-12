@@ -44,7 +44,7 @@ public class YearsMonthsDaysCounter {
                 }
             }
         } else {
-            if (d2 >= d1) { 
+            if (d2 >= d1) {
                 if (m1 == m2) {
                         y = y2 - y1;
                         d = d2 - d1;
