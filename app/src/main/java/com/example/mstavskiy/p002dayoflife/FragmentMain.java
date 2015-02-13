@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 
-public class FragmentMain extends Fragment implements DatePickerFragment {
+public class FragmentMain extends Fragment /*implements DatePickerFragment*/ {
 
     int d1 = 16;
     int m1 = 11;
