@@ -4,8 +4,8 @@ package com.example.mstavskiy.p002dayoflife;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
 
 public class TabListener<T extends Fragment>
         implements ActionBar.TabListener {
@@ -21,24 +21,24 @@ public class TabListener<T extends Fragment>
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction transaction) {
-        Fragment fragment = activity.getFragmentManager().findFragmentByTag(tag);
+        android.app.Fragment fragment = activity.getFragmentManager().findFragmentByTag(tag);
 
 
-        if (fragment == null) {
+       /* if (fragment == null) {
             fragment = Fragment.instantiate (activity, cls.getName());
             transaction.add(android.R.id.content, fragment, tag);
 
 
         } else
-        {
+        {*/
             transaction.attach(fragment);
 
-        }
+        //}
     }
 
     @Override
     public void onTabUnselected (ActionBar.Tab tab, FragmentTransaction transaction){
-        Fragment fragment = activity.getFragmentManager().findFragmentByTag(tag);
+        android.app.Fragment fragment = activity.getFragmentManager().findFragmentByTag(tag);
         if (fragment != null) {
             transaction.detach(fragment);
 
