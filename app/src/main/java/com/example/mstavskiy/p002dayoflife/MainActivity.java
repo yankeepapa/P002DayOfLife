@@ -1,19 +1,24 @@
 package com.example.mstavskiy.p002dayoflife;
 
-import android.app.ActionBar;
+
+
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 
 import com.example.mstavskiy.tabsswipe.adapter.TabsPagerAdapter;
 
-public class MainActivity extends FragmentActivity  {
+public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
-    private ViewPager viewPager;
+    private ViewPager mViewPager; // Глобальные переменные нужно писать с префиксом m
     private TabsPagerAdapter mAdapter;
-    private ActionBar actionBar;
-    // Tab titles
-    private String[] tabs = {"Fragment1", "Fragment2"};
+    private ActionBar mActionBar;
+    private final String FRAGMENT_1 = "Fragment 1";
+    private final String FRAGMENT_2 = "Fragment 2";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,71 +26,50 @@ public class MainActivity extends FragmentActivity  {
         setContentView(R.layout.main);
 
         // Initilization
-        viewPager = (ViewPager) findViewById(R.id.pager);
-        actionBar = getActionBar();
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mActionBar = getSupportActionBar();
         mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
-        viewPager.setAdapter(mAdapter);
-        actionBar.setHomeButtonEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        mViewPager.setAdapter(mAdapter);
+        mActionBar.setHomeButtonEnabled(false);
+        mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        ActionBar.Tab tab1 = actionBar.newTab();
-        tab1.setText("Tab 1");
-        tab1.setTabListener(new TabListener<>(this,"Tab 1", Fragment1.class));
-        actionBar.addTab(tab1);
+        ActionBar.Tab tab1 = mActionBar.newTab();
+        tab1.setText(FRAGMENT_1);
+        tab1.setTabListener(this);
+        mActionBar.addTab(tab1);
 
-        ActionBar.Tab tab2 = actionBar.newTab();
-        tab2.setText("Tab 2");
-        tab2.setTabListener(new TabListener<>(this,"Tab 2", Fragment2.class));
-        actionBar.addTab(tab2);
-
-        if (savedInstanceState != null) {
-            int savedIndex = savedInstanceState.getInt("SAVED_INDEX");
-            getActionBar().setSelectedNavigationItem(savedIndex);
-        }
+        ActionBar.Tab tab2 = mActionBar.newTab();
+        tab2.setText(FRAGMENT_2);
+        tab2.setTabListener(this);
+        mActionBar.addTab(tab2);
 
 
-   /* @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-
-        ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        ActionBar.Tab tab1 = actionBar.newTab();
-        tab1.setText("Tab 1");
-        tab1.setTabListener(new TabListener<Fragment1>(this,"Tab 1", Fragment1.class));
-        actionBar.addTab(tab1);
-
-        ActionBar.Tab tab2 = actionBar.newTab();
-        tab2.setText("Tab 2");
-        tab2.setTabListener(new TabListener<Fragment2>(this,"Tab 2", Fragment2.class));
-        actionBar.addTab(tab2);
-
-        if (savedInstanceState != null) {
-            int savedIndex = savedInstanceState.getInt("SAVED_INDEX");
-            getActionBar().setSelectedNavigationItem(savedIndex);
-        }
 
     }
 
 
     @Override
-    protected void onSaveInstanceState (Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("SAVED_INDEX", getActionBar().getSelectedNavigationIndex());
-
+    public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
+        switch ((String)tab.getText()){
+            case FRAGMENT_1:
+                mViewPager.setCurrentItem(0);
+                break;
+            case FRAGMENT_2:
+                mViewPager.setCurrentItem(1);
+                break;
+        }
     }
-
-
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }*/
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
     }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+
 }
