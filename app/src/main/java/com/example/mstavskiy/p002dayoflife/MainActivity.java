@@ -15,8 +15,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     private ViewPager mViewPager; // Глобальные переменные нужно писать с префиксом m
     private TabsPagerAdapter mAdapter;
     private ActionBar mActionBar;
-    private final String FRAGMENT_1 = "Fragment 1";
-    private final String FRAGMENT_2 = "Fragment 2";
+    private final String FRAGMENT_1 = "Main";
+    private final String FRAGMENT_2 = "List";
 
 
 
