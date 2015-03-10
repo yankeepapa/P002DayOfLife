@@ -52,10 +52,22 @@ public class FragmentMain extends Fragment /*implements DatePickerFragment*/ {
         return v;
     }
 
-    public void onLabelClick(View v) {
+    public void onViewCreated (View view, Bundle savedInstanceState){
+
+        super.onViewCreated(view, savedInstanceState);
+        dob.setOnClickListener(new OnClickListener() {
+           @Override
+           public void onLabelClick (View v) {
+               DialogFragment dateFragment = new DatePickerFragment();
+               dateFragment.show(getFragmentManager(), "datePicker");
+           }
+        });
+    }
+
+    /*public void onLabelClick(View v) {
         DialogFragment dateFragment = new DatePickerFragment();
         dateFragment.show(getFragmentManager(), "datePicker");
-    }
+    }*/
 
     public void onDatePicked (Calendar date) {
         // выводим выбранную дату в текстовой метке
