@@ -1,7 +1,6 @@
 package com.example.mstavskiy.p002dayoflife;
 
 
-import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -52,22 +51,37 @@ public class FragmentMain extends Fragment /*implements DatePickerFragment*/ {
         return v;
     }
 
-    public void onViewCreated (View view, Bundle savedInstanceState){
-
+    public void onViewCreated (View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        dob.setOnClickListener(new OnClickListener() {
-           @Override
-           public void onLabelClick (View v) {
-               DialogFragment dateFragment = new DatePickerFragment();
-               dateFragment.show(getFragmentManager(), "datePicker");
-           }
-        });
-    }
 
-    /*public void onLabelClick(View v) {
-        DialogFragment dateFragment = new DatePickerFragment();
-        dateFragment.show(getFragmentManager(), "datePicker");
-    }*/
+            btn_count.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View v) {
+                    YearsMonthsDaysCounter ymdc = new YearsMonthsDaysCounter();
+                    int[] ym = ymdc.yearsMonthsDaysCounter(y1, m1, d1, y2, m2, d2);
+
+                    RightWord rw = new RightWord();
+                    String[] str = rw.ymdt(ym);
+
+                    tv_t.setText("   Вы прожили:");
+                    tv_d.setText("   " + ym[2] + str[2]);
+                    tv_m.setText("   " + ym[1] + str[1]);
+                    tv_y.setText("   " + ym[0] + str[0]);
+                    tv_total.setText("   Всего: " + ym[3] + str[3]);
+                }
+            });
+
+             dob.setOnClickListener(new View.OnClickListener() {
+
+                  public void onClick(View v) {
+                        DatePickerFragment dateFragment = new DatePickerFragment();
+                        dateFragment.show(getChildFragmentManager(), "datePicker");
+                        dob.setText("Ok");
+                  }
+            });
+
+
+    };
 
     public void onDatePicked (Calendar date) {
         // выводим выбранную дату в текстовой метке
@@ -76,36 +90,15 @@ public class FragmentMain extends Fragment /*implements DatePickerFragment*/ {
         d1 = date.get(Calendar.DAY_OF_MONTH);
 
         updateDisplay();
-    }
+    };
 
-    // обновляем дату для вывода в TextView
     public void updateDisplay() {
         dob.setText(new StringBuilder().append(d1).append(".")
-                .append(m1).append(".").append(y1));
+        .append(m1).append(".").append(y1));
 
 
     }
 
-    public void onclick (View v) {
-        switch (v.getId()) {
 
-            case R.id.btn_count:
-
-                YearsMonthsDaysCounter ymdc = new YearsMonthsDaysCounter();
-                int[] ym = ymdc.yearsMonthsDaysCounter(y1,m1,d1,y2,m2,d2);
-
-
-                RightWord rw = new RightWord();
-                String[] str = rw.ymdt(ym);
-
-                tv_t.setText("   Вы прожили:");
-                tv_d.setText("   " + ym[2] + str[2]);
-                tv_m.setText("   " + ym[1] + str[1]);
-                tv_y.setText("   " + ym[0] + str[0]);
-                tv_total.setText("   Всего: " + ym[3] + str[3]);
-
-                break;
-
-        }
-    }
 }
+

@@ -22,10 +22,7 @@ public class DatePickerFragment extends DialogFragment implements
         @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // установим свою дату в диалоговом окне
-
-
         // создадим экземпляр класса DatePickerDialog и вернем его
-        //return new DatePickerDialog(getActivity(), this, year, month, day);
 
         DatePickerDialog dialog = new DatePickerDialog(getActivity(), this, year, month, day);
         dialog.getDatePicker().setMaxDate(new Date().getTime());

@@ -47,8 +47,8 @@
 
     <ImageButton
         android:id="@+id/btn_count"
-        android:layout_width="275dp"
-        android:layout_height="275dp"
+        android:layout_width="137dp"
+        android:layout_height="137dp"
         android:text="Рассчитать"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
