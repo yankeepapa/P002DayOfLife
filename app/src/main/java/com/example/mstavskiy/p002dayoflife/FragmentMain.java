@@ -1,6 +1,5 @@
 package com.example.mstavskiy.p002dayoflife;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,11 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import java.util.Calendar;
 
 
-public class FragmentMain extends Fragment /*implements DatePickerFragment*/ {
+public class FragmentMain extends Fragment  {
 
     int d1 = 16;
     int m1 = 11;
@@ -75,22 +73,20 @@ public class FragmentMain extends Fragment /*implements DatePickerFragment*/ {
 
                   public void onClick(View v) {
                         DatePickerFragment dateFragment = new DatePickerFragment();
+                        dateFragment.setInterface(new DatePickerFragment.DatePickedListener() {
+                            @Override
+                            public void onDatePicked(Calendar date) {
+                                y1 = date.get(Calendar.YEAR);
+                                m1 = date.get(Calendar.MONTH) + 1;
+                                d1 = date.get(Calendar.DAY_OF_MONTH);
+
+                                updateDisplay();
+                            }
+                        });
                         dateFragment.show(getChildFragmentManager(), "datePicker");
-                        dob.setText("Ok");
                   }
             });
-
-
-    };
-
-    public void onDatePicked (Calendar date) {
-        // выводим выбранную дату в текстовой метке
-        y1 = date.get(Calendar.YEAR);
-        m1 = date.get(Calendar.MONTH) + 1;
-        d1 = date.get(Calendar.DAY_OF_MONTH);
-
-        updateDisplay();
-    };
+    }
 
     public void updateDisplay() {
         dob.setText(new StringBuilder().append(d1).append(".")
@@ -98,7 +94,5 @@ public class FragmentMain extends Fragment /*implements DatePickerFragment*/ {
 
 
     }
-
-
 }
 

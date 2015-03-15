@@ -1,18 +1,15 @@
 package com.example.mstavskiy.p002dayoflife;
 
-
-
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-
 import com.example.mstavskiy.tabsswipe.adapter.TabsPagerAdapter;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
-    private ViewPager mViewPager; // Глобальные переменные нужно писать с префиксом m
+    private ViewPager mViewPager;
     private TabsPagerAdapter mAdapter;
     private ActionBar mActionBar;
     private final String FRAGMENT_1 = "Main";
@@ -43,11 +40,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         tab2.setText(FRAGMENT_2);
         tab2.setTabListener(this);
         mActionBar.addTab(tab2);
-
-
-
     }
-
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
@@ -63,13 +56,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
     }
-
-
 }

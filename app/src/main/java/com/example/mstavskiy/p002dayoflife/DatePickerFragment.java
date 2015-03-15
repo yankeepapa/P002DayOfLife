@@ -1,25 +1,27 @@
 package com.example.mstavskiy.p002dayoflife;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
 import android.widget.DatePicker;
-
 import java.util.Calendar;
 import java.util.Date;
 
 public class DatePickerFragment extends DialogFragment implements
         DatePickerDialog.OnDateSetListener {
 
-    private DatePickedListener mListener;
-
     static int year = 1985;
     static int month = 10;
     static int day = 16;
 
-        @Override
+    private DatePickedListener mListener;
+
+    public void setInterface (DatePickedListener d) {
+            mListener = d;
+    }
+
+    @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // установим свою дату в диалоговом окне
         // создадим экземпляр класса DatePickerDialog и вернем его
@@ -27,20 +29,6 @@ public class DatePickerFragment extends DialogFragment implements
         DatePickerDialog dialog = new DatePickerDialog(getActivity(), this, year, month, day);
         dialog.getDatePicker().setMaxDate(new Date().getTime());
         return dialog;
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        // when the fragment is initially shown (i.e. attached to the activity),
-        // cast the activity to the callback interface type
-        super.onAttach(activity);
-
-        try {
-            mListener = (DatePickedListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement " + DatePickedListener.class.getName());
-        }
     }
 
     @Override
@@ -56,8 +44,6 @@ public class DatePickerFragment extends DialogFragment implements
         year = year0;
         month = month0;
         day = day0;
-
-
     }
 
     public static interface DatePickedListener {
